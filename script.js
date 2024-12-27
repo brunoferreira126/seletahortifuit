@@ -51,9 +51,9 @@ function finalizarCadastro() {
     localStorage.setItem('clienteData', JSON.stringify(clienteData));
 
     // Exibir mensagem de sucesso e redirecionar
-    exibirNotificacao('Cadastro realizado com sucesso!', 'success');
+    exibirNotificacao('Cadastro realizado com sucesso! Redirecionando para as compras...', 'success');
     setTimeout(() => {
-        window.location.href = 'index.html'; // Redirecionar para a página de compras
+        window.location.href = 'compras.html'; // Alterado para garantir o redirecionamento correto
     }, 2000);
 }
 
