@@ -3,385 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seleta Hortifrúti</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <title>Cadastro - Seleta Hortifrúti</title>
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
-    <!-- Cabeçalho -->
-    <header class="header">
-        <div class="container">
-            <img id="logo" src="imagens/logo.png" alt="logomarca">
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#catalogo">Catálogo</a></li>
-                    <li><a href="#carrinho">Carrinho</a></li>
-                    <li><a href="#contato">Contatos</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Notificações -->
-    <div id="notificacao" class="notificacao"></div>
-    <div id="loader" class="loader" style="display: none;"></div>
-
-    <!-- Catálogo -->
-    <section class="catalogo" id="catalogo">
-        <div class="container">
-            <h2>Catálogo de Produtos</h2>
-            <div class="produtos">
-                <div class="produto">
-                    <img src="imagens/processados/abobora leite.png" alt="ABÓBORA AO LEITE">
-                    <h3>ABÓBORA AO LEITE</h3>
-                    <p>(CUBO 20 x 20) HIGIENIZADA, DESCASCADA E PRONTA PARA O CONSUMO.</p>
-                    <p><strong>Preço:</strong> R$4,59 / 400g</p>
-                    <button onclick="adicionarAoCarrinho('ABÓBORA AO LEITE', 4.59)">Adicionar ao Carrinho</button>
-                </div> 
-                 
-                <!-- Produto 2 -->
-                <div class="produto">
-                   <img src="imagens/processados/abobora cabocla.png" alt="ABÓBORA CABOCLA">
-                   <h3>ABÓBORA CABOCLA</h3>
-                   <p>(CUBO 20 x 20) HIGIENIZADA, DESCASCADA E PRONTA PARA O CONSUMO.</p>
-                   <p><strong>Preço:</strong> R$4,99 / 400g</p>
-                   <button onclick="adicionarAoCarrinho('ABÓBORA CABOCLA', 4.99)">Adicionar ao Carrinho</button>
-               </div>
-              <!-- Produto 3 -->
-               <div class="produto">
-                  <img src="imagens/processados/ACELGA FATIADA.png" alt="ACELGA FATIADA">
-                   <h3>ACELGA FATIADA</h3>
-                   <p> HIGIENIZADA E PRONTA PARA O CONSUMO.</p>
-                   <p><strong>Preço:</strong> R$2,89 / 250g</p>
-                   <button onclick="adicionarAoCarrinho('ACELGA FATIADA', 2.89)">Adicionar ao Carrinho</button>
-               </div>
-                   <!-- Produto 4 -->
-                   <div class="produto">
-                    <img src="imagens/processados/AGRIÃO HIDROPONICO.png" alt="AGRIÃO HIDROPONICO">
-                     <h3>AGRIÃO HIDROPONICO</h3>
-                     <p> HIGIENIZADO E PRONTO PARA O CONSUMO.</p>
-                     <p><strong>Preço:</strong> R$5,99 / 200g</p>
-                     <button onclick="adicionarAoCarrinho('AGRIÃO HIDROPONICO', 5.99)">Adicionar ao Carrinho</button>
-                 </div>
-
-                  <!-- Produto 5 -->
-                  <div class="produto">
-                    <img src="imagens/processados/ALFACE AMERICANA.png" alt="ALFACE AMERICANA ">
-                     <h3>ALFACE AMERICANA </h3>
-                     <p> HIGIENIZADA  FATIADA E PRONTA PARA O CONSUMO.  </p>
-                     <p><strong>Preço:</strong> R$4,99 / 250g</p>
-                     <button onclick="adicionarAoCarrinho('ALFACE AMERICANA ', 4.99)">Adicionar ao Carrinho</button>
-                 </div>
-
-                  <!-- Produto 6 -->
-                  <div class="produto">
-                    <img src="imagens/processados/ALFACE CRESPA.png" alt="ALFACE CRESPA  ">
-                     <h3>ALFACE CRESPA  </h3>
-                     <p> HIGIENIZADA FATIADA E PRONTA PARA O CONSUMO.  </p>
-                     <p><strong>Preço:</strong> R$4,89 / 250g</p>
-                     <button onclick="adicionarAoCarrinho('ALFACE CRESPA  ', 4.89)">Adicionar ao Carrinho</button>
-                 </div>
-
-                 
-                  <!-- Produto 7 -->
-                  <div class="produto">
-                    <img src="imagens/processados/ALFACE ROXO.png" alt="ALFACE ROXO   ">
-                     <h3>ALFACE ROXO   </h3>
-                     <p> HIGIENIZADA FATIADA E PRONTA PARA O CONSUMO  </p>
-                     <p><strong>Preço:</strong> R$5,99 / 250g</p>
-                     <button onclick="adicionarAoCarrinho('ALFACE ROXO   ', 5.99)">Adicionar ao Carrinho</button>
-                 </div>
-                 
-                 
-                 
-                  <!-- Produto 8 -->
-                  <div class="produto">
-                    <img src="imagens/processados/ALHO DESCASCADO.png" alt="ALHO DESCASCADO">
-                     <h3>ALHO DESCASCADO</h3>
-                     <p> HIGIENIZADO PRONTO PARA O CONSUMO.  </p>
-                     <p><strong>Preço:</strong> R$6,89 / 150g</p>
-                     <button onclick="adicionarAoCarrinho('ALHO DESCASCADO', 6.89)">Adicionar ao Carrinho</button>
-                 </div>
-                    <!-- Produto 9 -->
-                    <div class="produto">
-                        <img src="imagens/processados/BATATA DOCE.png" alt="BATATA DOCE">
-                         <h3>BATATA DOCE</h3>
-                         <p> HIGIENIZADO, DESCASCADA E PRONTA PARA O CONSUMO.</p>
-                         <p><strong>Preço:</strong> R$3,77 / 400g</p>
-                         <button onclick="adicionarAoCarrinho('BATATA DOCE', 3.77)">Adicionar ao Carrinho</button>
-                     </div>
-                       <!-- Produto 10 -->
-                    <div class="produto">
-                        <img src="imagens/processados/BATATA INGLESA.png" alt=" BATATA INGLESA">
-                         <h3> BATATA INGLESA</h3>
-                         <p> (CUBO 10 X 10 OU  20 x 20) HIGIENIZADA,PALITO DESCASCADA E PRONTA PARA O CONSUMO. </p>
-                         <p><strong>Preço:</strong> R$6,39 / 400g</p>
-                         <button onclick="adicionarAoCarrinho(' BATATA INGLESA', 6.39)">Adicionar ao Carrinho</button>
-                     </div>
-                      <!-- Produto 11 -->
-                    <div class="produto">
-                        <img src="imagens/processados/BETERRABA.png" alt=" BETERRABA">
-                         <h3> BETERRABA</h3>
-                         <p> FATIADA, RALADA OU CUBO (10 x 10) (20 X 20).  </p>
-                         <p><strong>Preço:</strong> R$3,49 / 400g</p>
-                         <button onclick="adicionarAoCarrinho(' BETERRABA', 3.49)">Adicionar ao Carrinho</button>
-                     </div>
-
-                    <!-- Produto 12 -->
-                    <div class="produto">
-                        <img src="imagens/processados/BROCOLIS.png" alt=" BROCOLIS">
-                         <h3> BROCOLIS</h3>
-                         <p>  HIGIENIZADO E PRONTO PARA O CONSUMO.  </p>
-                         <p><strong>Preço:</strong> R$5,98 / 400g</p>
-                         <button onclick="adicionarAoCarrinho(' BROCOLIS', 5.98)">Adicionar ao Carrinho</button>
-                     </div>
-
-                      <!-- Produto 13 -->
-                    <div class="produto">
-                        <img src="imagens/processados/CEBOLA PERA.png" alt=" CEBOLA PERA">
-                         <h3> CEBOLA PERA</h3>
-                         <p> RODELA, JULIENE, CUBO 10x10 OU 20 x 20. </p>
-                         <p><strong>Preço:</strong> R$2,77 /250g</p>
-                         <button onclick="adicionarAoCarrinho('CEBOLA PERA', 2.77)">Adicionar ao Carrinho</button>
-                     </div>
-                     
-                       <!-- Produto 14 -->
-                    <div class="produto">
-                        <img src="imagens/processados/HORTELÃ.png" alt=" HORTELÃ">
-                         <h3> HORTELÃ</h3>
-                         <p>  HIGIENIZADO E PRONTO PARA O CONSUMO. </p>
-                         <p><strong>Preço:</strong> R$2,59 /100g</p>
-                         <button onclick="adicionarAoCarrinho('HORTELÃ', 2.59)">Adicionar ao Carrinho</button>
-                     </div>
-                     
-                         <!-- Produto 15 -->
-                    <div class="produto">
-                        <img src="imagens/processados/MACAXEIRA DESCASCADA.png" alt=" MACAXEIRA DESCASCADA">
-                         <h3> MACAXEIRA DESCASCADA</h3>
-                         <p>  HIGIENIZADO E PRONTO PARA O CONSUMO. </p>
-                         <p><strong>Preço:</strong> R$3,99 /400g</p>
-                         <button onclick="adicionarAoCarrinho('MACAXEIRA DESCASCADA', 3.99)">Adicionar ao Carrinho</button>
-                     </div>
-                     
-                          <!-- Produto 15 -->
-                    <div class="produto">
-                        <img src="imagens/processados/PEPINO COMUM.png" alt=" PEPINO COMUM">
-                         <h3> PEPINO COMUM</h3>
-                         <p>  HIGIENIZADO, CORTADO EM CUBO OU RODELA. </p>
-                         <p><strong>Preço:</strong> R$1,59 /400g</p>
-                         <button onclick="adicionarAoCarrinho('PEPINO COMUM', 1.59)">Adicionar ao Carrinho</button>
-                     </div>
-
-                            <!-- Produto 16 -->
-                    <div class="produto">
-                        <img src="imagens/processados/PIMENTÃO AMARELO.png" alt="PIMENTÃO AMARELO">
-                         <h3> PIMENTÃO AMARELO</h3>
-                         <p>HIGIENIZADO  PICADO OU EM RODELA PRONTO  PARA O CONSUMO. </p>
-                         <p><strong>Preço:</strong> R$10,99 /250g</p>
-                         <button onclick="adicionarAoCarrinho('PIMENTÃO AMARELO', 10.99)">Adicionar ao Carrinho</button>
-                     </div>
-                     
-
-                             <!-- Produto 17 -->
-                    <div class="produto">
-                        <img src="imagens/processados/PIMENTÃO VERMELHO.png" alt="PIMENTÃO VERMELHO ">
-                         <h3> PIMENTÃO VERMELHO </h3>
-                         <p>HIGIENIZADO  PICADO OU EM RODELA PRONTO  PARA O CONSUMO.</p>
-                         <p><strong>Preço:</strong> R$10,99 /250g</p>
-                         <button onclick="adicionarAoCarrinho('PIMENTÃO VERMELHO', 10.99)">Adicionar ao Carrinho</button>
-                     </div>
-
-                     
-                             <!-- Produto 18 -->
-                    <div class="produto">
-                        <img src="imagens/processados/PIMENTÃO VERDE.png" alt="PIMENTÃO VERDE  ">
-                         <h3> PIMENTÃO VERDE </h3>
-                         <p>HIGIENIZADO  PICADO OU EM RODELA PRONTO  PARA O CONSUMO.</p>
-                         <p><strong>Preço:</strong> R$3,51 /250g</p>
-                         <button onclick="adicionarAoCarrinho('PIMENTÃO VERDE ', 3.51)">Adicionar ao Carrinho</button>
-                     </div>
-                     
-                            <!-- Produto 19 -->
-                    <div class="produto">
-                        <img src="imagens/processados/REPOLHO LISO.png" alt="REPOLHO LISO">
-                         <h3> REPOLHO LISO </h3>
-                         <p>FATIADO HIGIENIZADO E PRONTO  PARAO CONSUMO. </p>
-                         <p><strong>Preço:</strong> R$2,60 /250g</p>
-                         <button onclick="adicionarAoCarrinho('REPOLHO LISO', 2.60)">Adicionar ao Carrinho</button>
-                     </div>
-                     
-
-                            <!-- Produto 19 -->
-                    <div class="produto">
-                        <img src="imagens/processados/REPOLHO ROXO.png" alt="REPOLHO ROXO ">
-                         <h3> REPOLHO ROXO  </h3>
-                         <p>FATIADO HIGIENIZADO E PRONTO PARA O CONSUMO. </p>
-                         <p><strong>Preço:</strong> R$4,39 /250g</p>
-                         <button onclick="adicionarAoCarrinho('REPOLHO ROXO ', 4.39)">Adicionar ao Carrinho</button>
-                     </div>
-                     
-                            <!-- Produto 20-->
-                    <div class="produto">
-                        <img src="imagens/processados/RÚCULA.png" alt="RÚCULA ">
-                         <h3> RÚCULA </h3>
-                         <p>HIGIENIZADA E PRONTA PARA O CONSUMO. </p>
-                         <p><strong>Preço:</strong> R$2,69 /150g</p>
-                         <button onclick="adicionarAoCarrinho('RÚCULA', 2.69)">Adicionar ao Carrinho</button>
-                     </div>
-                     
-                            <!-- Produto 21-->
-                    <div class="produto">
-                        <img src="imagens/processados/SALSA.png" alt="SALSA PICADO">
-                         <h3> SALSA PICADO</h3>
-                         <p>IGIENIZADO E PRONTO PARA O CONSUMO.(POTE)</p>
-                         <p><strong>Preço:</strong> R$2,79 /70g</p>
-                         <button onclick="adicionarAoCarrinho('SALSA PICADO', 2.79)">Adicionar ao Carrinho</button>
-                     </div>
-                     
-                           <!-- Produto 22-->
-                    <div class="produto">
-                        <img src="imagens/processados/SALSAO PICADO.png" alt="SALSÃO PICADO">
-                         <h3> SALSÃO PICADO</h3>
-                         <p>HIGIENIZADO PRONTO PARA O CONSUMO. </p>
-                         <p><strong>Preço:</strong> R$3,98 /150g</p>
-                         <button onclick="adicionarAoCarrinho('SALSÃO PICADO', 3.98)">Adicionar ao Carrinho</button>
-                     </div>
-                     
-                            <!-- Produto 23-->
-                    <div class="produto">
-                        <img src="imagens/processados/VAGEM CORTADA.png" alt="VAGEM CORTADA">
-                         <h3> VAGEM CORTADA</h3>
-                         <p>HIGIENIZADA PRONTA PARA O CONSUMO. (BANDEJA) </p>
-                         <p><strong>Preço:</strong> R$2,99 /250g</p>
-                         <button onclick="adicionarAoCarrinho('VAGEM CORTADA', 2.99)">Adicionar ao Carrinho</button>
-                     </div>
-                     
-                           <!-- Produto 24-->
-                    <div class="produto">
-                        <img src="imagens/processados/CEBOLA ROXA.png" alt="CEBOLA ROXA">
-                         <h3> CEBOLA ROXA</h3>
-                         <p>RODELA,JULIENE,CUBO 10x10 OU 20x20 </p>
-                         <p><strong>Preço:</strong> R$3,55 /250g</p>
-                         <button onclick="adicionarAoCarrinho('CEBOLA ROXA', 3.55)">Adicionar ao Carrinho</button>
-                     </div>
-
-                            <!-- Produto 25-->
-                    <div class="produto">
-                        <img src="imagens/processados/CEBOLINHA PICADA.png" alt="CEBOLINHA PICADA">
-                         <h3> CEBOLINHA PICADA</h3>
-                         <p>HIGIENIZADO E PRONTO PARA O CONSUMO. </p>
-                         <p><strong>Preço:</strong> R$2,33 /70g</p>
-                         <button onclick="adicionarAoCarrinho('CEBOLINHA PICADA', 2.33)">Adicionar ao Carrinho</button>
-                     </div>
-
-                           <!-- Produto 25-->
-                    <div class="produto">
-                        <img src="imagens/processados/CENOURA.png" alt="CENOURA">
-                         <h3> CENOURA</h3>
-                         <p> FATIADA, PALITO,RALADA OU CUBO (10x10) (20X20) </p>
-                         <p><strong>Preço:</strong> R$3,69 /400g</p>
-                         <button onclick="adicionarAoCarrinho('CENOURA', 3.69)">Adicionar ao Carrinho</button>
-                     </div>
-
-                        <!-- Produto 26-->
-                    <div class="produto">
-                        <img src="imagens/processados/CHUCHU.png" alt="CHUCHU">
-                         <h3> CHUCHU</h3>
-                         <p> CUBO 20x20 PALITO OU INTEIRO HIGIENIZADO, DESCASCADO E PRONTO PARA O CONSUMO. </p>
-                         <p><strong>Preço:</strong> R$2,99 /400g</p>
-                         <button onclick="adicionarAoCarrinho('CHUCHU', 2.99)">Adicionar ao Carrinho</button>
-                     </div>
-
-                     
-                        <!-- Produto 27-->
-                    <div class="produto">
-                        <img src="imagens/processados/COENTRO PICADO.png" alt="COENTRO PICADO ">
-                         <h3> COENTRO PICADO </h3>
-                         <p>  HIGIENIZADO E PRONTO PARA O CONSUMO.(POTE)  </p>
-                         <p><strong>Preço:</strong> R$2,99 /70g</p>
-                         <button onclick="adicionarAoCarrinho('COENTRO PICADO ', 2.99)">Adicionar ao Carrinho</button>
-                     </div>
-
-                         <!-- Produto 28-->
-                    <div class="produto">
-                        <img src="imagens/processados/COUVE-FLOR.png" alt="COUVE-FLOR ">
-                         <h3> COUVE-FLOR </h3>
-                         <p>  HIGIENIZADO E PRONTO PARA O CONSUMO. </p>
-                         <p><strong>Preço:</strong> R$6,79 /400g</p>
-                         <button onclick="adicionarAoCarrinho('COUVE-FLOR', 6.79)">Adicionar ao Carrinho</button>
-                     </div>
-
-
-                         <!-- Produto 29-->
-                    <div class="produto">
-                        <img src="imagens/processados/COUVE-MANTEIGA.png" alt="COUVE-MANTEIGA">
-                         <h3>COUVE-MANTEIGA</h3>
-                         <p>  FATIADO HIGIENIZA DO E PRONTO PARA O CONSUMO.  </p>
-                         <p><strong>Preço:</strong> R$3,99 /250g</p>
-                         <button onclick="adicionarAoCarrinho('COUVE-MANTEIGA', 3.99)">Adicionar ao Carrinho</button>
-                     </div>
-                         
-                     <!-- Produto 30-->
-                    <div class="produto">
-                        <img src="imagens/processados/ESPINAFRE.png" alt="ESPINAFRE ">
-                         <h3>ESPINAFRE </h3>
-                         <p>  HIGIENIZADO E PRONTO PARA O CONSUMO.  </p>
-                         <p><strong>Preço:</strong> R$3,49 /200g</p>
-                         <button onclick="adicionarAoCarrinho('ESPINAFRE ', 3.49)">Adicionar ao Carrinho</button>
-                     </div>                 
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Carrinho -->
-    <section class="carrinho" id="carrinho">
-        <div class="container">
-            <h2><i class="fas fa-shopping-cart"></i> Seu Carrinho</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Produto</th>
-                        <th>Quantidade</th>
-                        <th>Preço</th>
-                        <th>Total</th>
-                        <th>Ação</th>
-                    </tr>
-                </thead>
-                <tbody id="tabela-carrinho"></tbody>
-            </table>
-            <p class="total" id="total">Total: R$0,00</p>
-            <button onclick="finalizarPedido()">Finalizar Pedido</button>
+    <div id="notificacao" class="notificacao"></div> <!-- Notificação global -->
+    <div class="form-container">
+        <img src="imagens/logo.png" alt="Logo Seleta Hortifrúti" class="logo">
+        <h1>Cadastre-se</h1>
+        <form id="cadastro-form" onsubmit="event.preventDefault(); finalizarCadastro();">
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
             
-        </div>
-    </section>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+            
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" placeholder="(99) 99999-9999" required>
 
-    <!-- Contato -->
-    <section class="contato" id="contato">
-        <div class="container">
-            <h2>Fale Conosco</h2>
-            <p>Entre em contato pelas redes sociais ou pelo WhatsApp. Estamos prontos para te atender!</p>
-            <div class="botoes-contato">
-                <a class="btn-instagram" href="https://www.instagram.com/seletahortifruty/" target="_blank">
-                    <i class="fab fa-instagram"></i> Instagram
-                </a>
-                <a class="btn-whatsapp" href="https://api.whatsapp.com/send/?phone=5585987011081&text&type=phone_number&app_absent=0" target="_blank">
-                    <i class="fab fa-whatsapp"></i> WhatsApp
-                </a>
-            </div>
-        </div>
-    </section>
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" placeholder="Digite sua cidade" required>
+            
+            <label for="endereco-rua">Rua:</label>
+            <input type="text" id="endereco-rua" name="enderecoRua" placeholder="Rua" required>
+            
+            <label for="endereco-numero">Número:</label>
+            <input type="number" id="endereco-numero" name="enderecoNumero" placeholder="Número" required>
 
-    <!-- Rodapé -->
-    <footer class="footer">
-        <div class="container">
-            <p>Seleta Hortifrúti &copy; 2024 - Todos os direitos reservados.</p>
-        </div>
-    </footer>
+            <label for="endereco-complemento">Complemento:</label>
+            <input type="text" id="endereco-complemento" name="complemento">
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+            <label for="endereco-referencia">Referência:</label>
+            <input type="text" id="endereco-referencia" name="referencia">
+            
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" autocomplete="off" placeholder="Digite sua senha" required>
+            
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
+    <script src="script.js"></script> <!-- Arquivo JS externo -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </body>
 </html>
