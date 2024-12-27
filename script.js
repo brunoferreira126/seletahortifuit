@@ -12,23 +12,23 @@ function exibirNotificacao(mensagem, tipo = 'success') {
 function validarFormularioCadastro(data) {
     const telefoneRegex = /^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/;
 
-    if (data.nome && data.nome.length < 3) {
+    if (!data.nome || data.nome.length < 3) {
         alert('O nome deve ter pelo menos 3 caracteres.');
         return false;
     }
-    if (data.email && !/^\S+@\S+\.\S+$/.test(data.email)) {
+    if (!data.email || !/^\S+@\S+\.\S+$/.test(data.email)) {
         alert('Insira um email válido.');
         return false;
     }
-    if (data.telefone && !telefoneRegex.test(data.telefone)) {
+    if (!data.telefone || !telefoneRegex.test(data.telefone)) {
         alert('Insira um telefone válido no formato (99) 99999-9999.');
         return false;
     }
-    if (data.enderecoRua && data.enderecoRua.length < 3) {
+    if (!data.enderecoRua || data.enderecoRua.length < 3) {
         alert('A rua deve ter pelo menos 3 caracteres.');
         return false;
     }
-    if (data.enderecoNumero && data.enderecoNumero <= 0) {
+    if (!data.enderecoNumero || data.enderecoNumero <= 0) {
         alert('O número do endereço deve ser maior que 0.');
         return false;
     }
@@ -72,6 +72,7 @@ function adicionarAoCarrinho(nome, preco) {
     }
 
     atualizarCarrinho();
+    salvarCarrinho();
     exibirNotificacao(`Produto "${nome}" adicionado ao carrinho.`);
 }
 
@@ -79,6 +80,7 @@ function adicionarAoCarrinho(nome, preco) {
 function removerDoCarrinho(nome) {
     carrinho = carrinho.filter(item => item.nome !== nome);
     atualizarCarrinho();
+    salvarCarrinho();
     exibirNotificacao(`Produto "${nome}" removido do carrinho.`);
 }
 
@@ -105,6 +107,11 @@ function atualizarCarrinho() {
     });
 
     document.getElementById('total').textContent = `Total: R$${totalPedido.toFixed(2)}`;
+}
+
+// Salvar carrinho no localStorage
+function salvarCarrinho() {
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
 }
 
 // Finalizar Pedido
@@ -186,3 +193,12 @@ function gerarPlanilha(pedido) {
         exibirNotificacao("Erro ao gerar planilha.", "error");
     }
 }
+
+// Carregar carrinho ao iniciar
+document.addEventListener('DOMContentLoaded', () => {
+    const savedCarrinho = localStorage.getItem('carrinho');
+    if (savedCarrinho) {
+        carrinho = JSON.parse(savedCarrinho);
+        atualizarCarrinho();
+    }
+});
