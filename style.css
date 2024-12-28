@@ -224,15 +224,23 @@ header img {
 }
 
 
-
-
-
-
 .total {
     margin-top: 20px;
     font-size: 1.2rem;
     font-weight: bold;
     text-align: right;
+}
+
+#taxa-entrega{
+    color: #004b26;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#total-com-entrega{
+    color: #004b26;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 

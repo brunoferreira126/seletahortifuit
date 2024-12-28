@@ -81,6 +81,26 @@ input:focus {
     font-size: 0.9rem;
 }
 
+/* Estilo básico para campos de seleção */
+select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #004b26;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: white;
+    color: #004b26;
+}
+
+/* Foco no campo de seleção */
+select:focus {
+    border-color: #006a36;
+    outline: none;
+    box-shadow: 0 0 3px #006a36;
+}
+
+
 
 /* Botões */
 button {

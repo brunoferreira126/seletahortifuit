@@ -22,7 +22,15 @@
             <input type="text" id="telefone" name="telefone" placeholder="(99) 99999-9999" required>
 
             <label for="cidade">Cidade:</label>
-            <input type="text" id="cidade" name="cidade" placeholder="Digite sua cidade" required>
+            <select id="cidade" name="cidade" required>
+                <option value="" disabled selected>Selecione sua cidade</option>
+                <option value="Fortaleza">Fortaleza</option>
+                <option value="Eusébio">Eusébio</option>
+                <option value="Aquiraz">Aquiraz</option>
+                <option value="Pindorama">Pindorama</option>
+                <option value="Cascavel">Cascavel</option>
+                <option value="Beberibe">Beberibe</option>
+            </select>
             
             <label for="endereco-rua">Rua:</label>
             <input type="text" id="endereco-rua" name="enderecoRua" placeholder="Rua" required>
